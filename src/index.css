@@ -14,3 +14,17 @@
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
 }
+
+.badge {
+   @apply px-8 py-1.5 rounded-2xl;
+}
+
+.Active {
+   @apply bg-teal-300 text-teal-700;
+}
+.Pending {
+   @apply bg-orange-300 text-orange-700;
+}
+.Reject {
+   @apply bg-red-300 text-red-700;
+}
