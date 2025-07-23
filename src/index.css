@@ -28,3 +28,11 @@
 .Reject {
    @apply bg-red-300 text-red-700;
 }
+
+button {
+   @apply px-8 py-1.5 bg-slate-700 rounded-xl;
+}
+
+input {
+   @apply w-96 h-10 border border-slate-300;
+}

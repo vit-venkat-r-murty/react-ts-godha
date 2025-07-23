@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ChangeEvent } from 'react'
 import type { ProductPros } from './types/Product'
-import StatusCompoent from './components/props/Status'
-import { Status } from './types/enums'
-import Button from './components/props/Button'
+import ButtonEvent from './components/events/ButtonEvent'
+import InputEvent from './components/events/InputEvent'
+import FormEvent from './components/events/FormEvent'
 
 function App() {
    const [products, setProducts] = useState<ProductPros[]>([])
@@ -19,6 +19,13 @@ function App() {
    useEffect(() => {
       getProducts()
    }, [])
+
+   function handleDynamicChange<
+      T extends HTMLInputElement | HTMLTextAreaElement
+   >(e: ChangeEvent<T>) {
+      console.log(e.target.value)
+   }
+
    return (
       <>
          <h1>Hello React with Typescript</h1>
@@ -44,7 +51,7 @@ function App() {
                <Title children='Hello Component' />
             </Heading> */}
 
-            <StatusCompoent status={Status.Reject} />
+            {/* <StatusCompoent status={Status.Reject} />
 
             <form>
                <Button
@@ -60,6 +67,33 @@ function App() {
                label='Edit'
                bgColor='bg-purple-200'
                textColor='text-purple-800'
+            />
+
+            <Container style={{ border: '2px solid #000', padding: '4px' }} /> */}
+
+            <ButtonEvent
+               handleClick={(event, id) =>
+                  console.log('Clicked', event.clientX, id)
+               }
+            />
+
+            <InputEvent
+               value=''
+               handleChange={(e) => console.log(e.target.value)}
+            />
+            <FormEvent
+               handleSubmit={(e) => {
+                  e.preventDefault()
+                  console.log('Form Submited')
+               }}
+               handlePaste={(e) =>
+                  `Pasted Content : ${e.clipboardData?.getData('text')}`
+               }
+               handleKeyboard={(e) => {
+                  if (e.key === 'Enter') {
+                     console.log('Enter Pressed')
+                  }
+               }}
             />
          </div>
       </>
