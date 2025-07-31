@@ -1,31 +1,31 @@
-import AuthContextProvider from "./components/states/useContext/auth-context/AuthContext"
-import AuthUser from "./components/states/useContext/auth-context/AuthUser"
-import ThemeContextProvider, { ThemeContext } from "./components/states/useContext/theme-context/ThemeContext"
-import { useContext } from "react"
+import Numbers from './components/never/Numbers'
 
 function App() {
+    return (
+        <div className="grid h-screen place-items-center bg-gray-900 text-white">
+            <div>
+                <h1 className="text-base font-medium">
+                    React with Typescript!
+                </h1>
 
-   const theme = useContext(ThemeContext)
-   return (
-      <>
-      <AuthContextProvider>
-         <ThemeContextProvider>
-            <div className='flex items-center justify-center gap-x-3 h-screen w-full'>
-               <h1>Hello React with Typescript</h1>
-               <AuthUser/>
+                {/* <Lists items={['Batman', 'Superman']} />
+
+                <Lists items={[1, 2]} /> */}
+
+                {/* <Lists
+                    items={[
+                        {id: 1, name: 'john', email: 'hello@gmail.com' },
+                        {id: 2, name: 'sam', email: 'sam@gmail.com' },
+                    ]}
+                /> */}
+
+                <Numbers
+                    value={10}
+                    isNegative
+                />
             </div>
-            {/* <div 
-               style={{ 
-                  backgroundColor : theme.primaryTheme.background, 
-                  color: theme.primaryTheme.text
-               }}>
-               Card
-            </div> */}
-            
-         </ThemeContextProvider>
-         </AuthContextProvider>
-      </>
-   )
+        </div>
+    )
 }
 
 export default App
